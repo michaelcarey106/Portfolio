@@ -1,0 +1,79 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+#########################################################################
+#  Spark config Script
+#########################################################################
+
+$spark_Script = <<SCRIPT
+    cd Documents
+
+    mkdir spark_labs
+
+    chmod 755 spark_labs
+
+    cd spark_labs    
+
+        #Creates new directory and changes permissions
+
+	wget -q https://www.apache.org/dist/spark/spark-2.1.1/spark-2.1.1-bin-hadoop2.7.tgz
+
+    tar -xzvf spark-2.1.1-bin-hadoop2.7.tgz
+    
+        #downloads spark tar and unzips it
+
+    echo SPARK_HOME=~/Documents/spark_labs/spark >> ~/.bashrc
+
+    source ~/.bashrc
+
+        #sets the spark home path in bashrc profile and realoads it
+
+    cd ../
+
+
+SCRIPT
+
+#########################################################################
+#  Scala config Script
+#########################################################################
+
+$scala_Script = <<SCRIPT
+    cd Documents
+
+    mkdir scala
+
+    chmod 755 scala
+
+    cd scala
+
+        #Creates new directory and changes permissions
+
+	wget -q https://downloads.lightbend.com/scala/2.12.3/scala-2.12.3.tgz
+
+    tar -xzvf scala-2.12.3.tgz
+
+        #downloads spark tar and unzips it
+
+SCRIPT
+
+
+
+Vagrant.configure("2") do |config|
+
+#########################################################################
+#  Proxy Config
+#########################################################################
+    if Vagrant.has_plugin?("vagrant-proxyconf")
+        config.proxy.http="http://username:password@proxyserver:port"
+        config.proxy.https="http://username:password@proxyserver:port"
+        config.proxy.no_proxy = "localhost,127.0.0.1"
+    end
+        #the above changes the HTTP and HTTPS proxys for sitting behind a corporate proxy
+ 
+  config.vm.box = "acntech/ubuntu64-dev"
+        #this is vagrant specific and creates a VM using an ubuntu OS, this cna be changed for a variety of differnet distrodutions
+  config.vm.provision :shell, :inline => $spark_Script
+  config.vm.provision :shell, :inline => $scala_Script 
+        #the 2 line above execute the previously declared inline scripts
+
+end
