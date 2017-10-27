@@ -1,0 +1,5 @@
+As a young graduate looking to gain experience in various areas of technology coupling this with the increased competition of new graduates every year, it is essential that one should look to progress and show competencies outside of work. As such I decided to develop this online CV to display the work experience and skills that would be displayed in a traditional paper CV, but also furthers them by displaying my technical competencies with regards web development, hosting and design.
+
+I revisited uni material along with other online material, picked a few design themes and played around with them to find the best design configuration, I progressed to then edit the content to display my education, work experience and also some personal information on what I do outside of work for fun. 
+
+I use this web CV as a tool LinkedIn recruiters and employers can view so they can get and initial flavour and insight of me. Another result this web page delivers to me is a small project that every now and again I can revisit to update and re familiarise myself with web development and hosting.
